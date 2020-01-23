@@ -9,6 +9,7 @@
     <title>YourTests - Create &amp; Do Your Test|Home</title>
     <link rel="stylesheet" href="../public/css/log_reg.css">
     <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/profile.css">
 </head>
 
 <body>
@@ -40,7 +41,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="../public/img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="index.php"><img src="../public/img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -71,13 +72,24 @@
                                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
+                                <?php if(isset($_SESSION['u_id'])): ?>
+                                    
+                                    <div class="btn-group">
+                                        <span class="dropdown-toggle" data-toggle="dropdown">Xin chào <?php echo $_SESSION['u_firstName']; ?></span>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="profile.php">Thông tin</a>
+                                            <a class="dropdown-item" href="logout.php">Log out</a>
+                                        </div>
 
-                            <!-- Register / Login -->
-                            <div class="register-login-area">
-                                <a href="register.php" class="btn">Đăng ký</a>
-                                <a href="login.php" class="btn">Đăng nhập</a>
-                            </div>
 
+                                    </div>
+                                <?php else : ?>
+                                    <!-- Register / Login -->
+                                    <div class="register-login-area">
+                                        <a href="register.php" class="btn">Đăng ký</a>
+                                        <a href="login.php" class="btn">Đăng nhập</a>
+                                    </div>
+                                <?php endif; ?>
                         </div>
                         <!-- Nav End -->
                     </div>
