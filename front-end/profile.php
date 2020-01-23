@@ -1,4 +1,7 @@
 <?php 
+    require_once __DIR__.'/../autoloads/autoload.php';
+?>
+<?php 
     require_once __DIR__.'/../layouts/header.php';
 ?>
 <div class = "container" style = "margin-top:20px;">
@@ -200,24 +203,7 @@
     
 </div>
 </div>
-<script>
-function display_info(evt, info) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("profile-content");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace("active", "");
-          }
-          document.getElementById(info).style.display = "block";
-          evt.currentTarget.className += "active";
-        }
-        
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-</script>
+<script type = "text/javascript" src = "../public/js/profile.js"></script>
 <?php
     require_once __DIR__.'/../layouts/footer.php';
 ?>

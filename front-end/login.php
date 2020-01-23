@@ -41,20 +41,20 @@
             <h2 class="title">YOURTEST</h2>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email" value = "<?php echo $data['email']; ?>">
+              <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email" autofocus value = "<?php echo $data['email']; ?>">
               <?php  if(isset($error['email'])): ?>
                 <div class="text-danger"><?php echo $error['email']; ?></div>
               <?php endif; ?>
             </div>
             <div class="form-group">
               <label for="password">Mật khẩu</label>
-              <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password" value = "<?php echo $data['password']; ?>">
+              <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password">
               <?php  if(isset($error['password'])): ?>
                 <div class="text-danger"><?php echo $error['password']; ?></div>
               <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-primary">Đăng nhập</button>
-            <div>Bạn chưa có tài khoản? <a href="register.php">Đăng ký >></a></div>
+            <div>Bạn chưa có tài khoản? <a href="regist.php">Đăng ký >></a></div>
         </form>
       </div>
     </div>

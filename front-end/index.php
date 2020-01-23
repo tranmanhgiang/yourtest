@@ -1,4 +1,7 @@
 <?php
+    require_once __DIR__.'/../autoloads/autoload.php';
+?>
+<?php
     require __DIR__.'/../layouts/header.php';
 ?>
     <!-- ##### Hero Area Start ##### -->
@@ -7,10 +10,17 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <!-- Hero Content -->
-                    <div class="hero-content text-center">
-                        <h2>Trải nghiệm cùng chúng tôi!</h2>
-                        <a href="login.php" class="btn clever-btn">Bắt đầu</a>
-                    </div>
+                    <?php if(isset($_SESSION['u_id'])): ?>
+                        <div class="hero-content text-center">
+                            <h2 style = "color: white;">Nơi ươm mầm tài năng việt!</h2>
+                        </div>
+                    <?php else: ?>
+                        <div class="hero-content text-center">
+                            <h2>Trải nghiệm cùng chúng tôi!</h2>
+                            <a href="login.php" class="btn clever-btn">Bắt đầu</a>
+                        </div>
+                    <?php endif; ?>
+                    
                 </div>
             </div>
         </div>

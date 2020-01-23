@@ -86,7 +86,7 @@
                                 <?php else : ?>
                                     <!-- Register / Login -->
                                     <div class="register-login-area">
-                                        <a href="register.php" class="btn">Đăng ký</a>
+                                        <a href="regist.php" class="btn">Đăng ký</a>
                                         <a href="login.php" class="btn">Đăng nhập</a>
                                     </div>
                                 <?php endif; ?>
