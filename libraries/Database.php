@@ -24,6 +24,25 @@
             return $this->conn->insert_id;
         }
 
+
+        public function update($table, array $data, $conditions){
+            $sql = "UPDATE {$table}";
+            $set = " SET ";
+            $where = " WHERE ";
+            foreach($data as $field => $value) {
+                if(is_string($value)) {
+                    $set .= $field .'='.'\''. $this->conn->real_escape_string($value) .'\',';
+                } else {
+                    $set .= $field .'='. $this->conn->real_escape_string($value) . ',';
+                }
+            }
+            $set = substr($set, 0, -1);
+            $sql .= $set . $where . $conditions;
+            $result = $this->conn->query($sql) or die( "Lỗi truy vấn Update -- " .mysqli_error($this->conn));
+            return $this->conn->affected_rows;
+        }
+
+
         public function fetchOne($table,$query){
             $sql = "SELECT * FROM {$table} WHERE ";
             $sql .= $query;
@@ -33,6 +52,12 @@
             return $result -> fetch_assoc();
         }
 
+        
+        public function fetchID($table , $id ){
+            $sql = "SELECT * FROM {$table} WHERE id = $id ";
+            $result = $this->conn->query($sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->conn));
+            return $this->conn->fetch_assoc;
+        }
         
     }
 ?>

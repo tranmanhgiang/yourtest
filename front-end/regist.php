@@ -4,7 +4,8 @@
 		'u_lastName' => postInput('lastname'),
 		'u_firstName' => postInput('firstname'),
 		'u_email' => postInput('email'),
-		'u_password' => postInput('password')
+		'u_password' => postInput('password'),
+		'u_description' => postInput('description')
 	];
 	$error = [];
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -39,9 +40,8 @@
 		
 		
 	}
-
-
 ?>
+
 <?php
     require_once __DIR__.'/../layouts/header.php';
 ?>
@@ -74,12 +74,14 @@
 						<?php if(isset($error['email'])): ?>
 							<div class="text-danger"><?php  echo $error['email']; ?></div>
 						<?php endif; ?>
+
 						<div class="form-group"> 
 							<input type="password" placeholder="Mật khẩu" class="form-control" name="password" id="password" >
 						</div>
 						<?php if(isset($error['password'])): ?>
 							<div class="text-danger"><?php  echo $error['password']; ?></div>
 						<?php endif; ?>
+
 						<div class="form-group">
 							<input type="password" placeholder="Nhập lại mật khẩu" class="form-control" name="confpass" id="confpass" >
 						</div>
@@ -89,6 +91,8 @@
 						<div class="form-group">
 							<span class="error" style="color:red; font-weight: bold;"></span>
 						</div>
+
+						<textarea rows="5" cols="80" placeholder="Nhập mô tả về bản thân" name = "description" id = "description"></textarea>
                         <button class="btn btn-lg btn-primary btn-block" type="submit"> Đăng ký</button><br/>
                         <p>Bạn đã có tài khoản? <a href="login.php">Đăng nhập >></a></p>
 					</form>

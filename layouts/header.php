@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../public/css/log_reg.css">
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" href="../public/css/do-test.css">
 </head>
 
 <body>
@@ -60,8 +61,9 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="index.php">Trang chủ</a></li>
-                                <li><a href="courses.html">Thi thử</a></li>
-                                <li><a href="add-question.php">Tạo bài thi</a></li>
+                                <li><a href="dotest.php">Thi thử</a></li>
+                                <li><a href="aaaa">Tạo bài thi</a></li>
+                                <li><a href="add-question.php">Thêm câu hỏi</a></li>
                                 <li><a href="instructors.html">Xếp hạng thành tích</a></li>
                             </ul>
 

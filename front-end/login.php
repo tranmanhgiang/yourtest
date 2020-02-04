@@ -20,6 +20,10 @@
       if($check != NULL){
         $_SESSION['u_id'] = $check['u_id'];
         $_SESSION['u_firstName'] = $check['u_firstName'];
+        $_SESSION['u_email'] = $check['u_email'];
+        $_SESSION['u_lastName'] = $check['u_lastName'];
+        $_SESSION['u_description'] = $check['u_description'];
+        $_SESSION['u_role'] = $check['u_role'];
         echo "<script>alert('Đăng nhập thành công'); location.href='index.php'</script>";
       }else{
         $_SESSION['error'] = "Email hoặc mật khẩu không chính xác";
