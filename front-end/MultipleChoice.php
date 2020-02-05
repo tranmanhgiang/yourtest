@@ -1,136 +1,11 @@
 <?php
 	require_once __DIR__.'/../autoloads/autoload.php';
 	require_once __DIR__.'/../layouts/header.php';
-    if(!isset($_SESSION['u_id'])){
-        echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='index.php'</script>";
-    }
+    // if(!isset($_SESSION['u_id'])){
+    //     echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='index.php'</script>";
+    // }
 ?>
-	<div class = "container">
-		<div class = "text-center">
-			<h1 class = "display-4">Chọn dạng câu hỏi</h1>
-		</div>
-		<ul class = "nav nav-tabs nav-justified" id = "nav" role = "tablist">
-			<li class = "nav-item">
-				<a href = "#" class = "nav-link h4 mb-0" id = "type-1" aria-controls = "step-1" aria-selected = "true">Dạng 1<br/><small>chọn đúng/sai</small></a>
-      		</li>
-			<li class = "nav-item">
-				<a href = "#" class = "nav-link h4 mb-0" id = "type-2" aria-controls = "step-2" aria-selected = "false">Dạng 2<br/><small>chọn 1 đáp án</small></a>
-			</li>
-			<li class = "nav-item">
-				<a href = "#" class = "nav-link h4 mb-0" id = "type-3" aria-controls = "step-3" aria-selected = "false">Dạng 3<br/><small>chọn nhiều đáp án</small></a>
-			</li>
-		</ul>
-	</div>
-<!-- end option -->
-	<form class = "container" id = "true-false" style = "display: none;">
-		<div class = "form-group">
-			<label for = "ques-type1">Nhập câu hỏi:</label>
-			<textarea class = "form-control" id = "ques-type1" rows = "3"></textarea>
-		</div>
-		<div class = "form-group">
-			<div>Đáp án:</div>
-			<input type = "radio" name = "true_ques"/> Đúng<br/>
-			<input type = "radio" name = "false_ques"/> Sai
-		</div>
-		<div class="form-group form-inline">
-			<label style="margin-right : 27px;">Độ khó:</label>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" style="width: 50%" name="dokho">
-				<option value="easy" selected>Dễ</option>
-				<option value="medium">Trung bình</option>
-				<option value="difficult">Khó</option>
-			</select>
-		</div>
-		<div class="form-group form-inline">
-			<label style="margin-right : 15px;">Lĩnh vực:</label>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref3" style="width: 42%" name = "linhvuc">
-				<option value="toan" selected>Toán</option>
-				<option value="ly">Vật lý</option>
-				<option value="anh">Tiếng Anh</option>
-				<option value="iq">IQ</option>
-				<option value="khac" >Khác</option>
-			</select>
-			<div id="div_khac3" class="form-group form-inline" style="display: none">
-				<label style="margin-right : 15px;">Nhập lĩnh vực:</label>
-				<input type="text" class="form-control" name = "lv_khac"/>
-			</div>
-		</div>
-		<div class = "form-group row">
-		<div class = "col-sm-10"></div>
-		<div class = "col-sm-2">
-			<input type = "submit" class = "btn btn-success" value = "Lưu">
-		
-			<button type="button" class="btn btn-danger">Thoát</button>
-		</div>
-	</div>
-		
-	</form>
-<!-- end true-false question -->
-	
-	<form class = "container" id = "choise" style = "display: none;">
-		<div class = "form-group">
-			<label for = "ques-type2">Nhập câu hỏi:</label>
-			<textarea class = "form-control" id = "ques-type2" rows = "3"></textarea>
-		</div>
-		<div class = "form-group row">
-			<div class = "col-sm-2">Nhập đáp án:</div>
-			<div class = "col-sm-6"></div>
-			<div>Đáp án đúng</div>
-		</div>
-		<div class="form-group has-success row"> 
-			<label class="control-label col-sm-1" for="id1">A: </label> 				
-			<input class="form-control col-sm-6" type="text" id="id1"> 
-			<input type = "radio" name = "single_true" class = "col-sm-3"> 
-		</div>
-		<div class="form-group has-success row"> 
-			<label class="control-label col-sm-1" for="id2">B: </label> 
-			<input class="form-control col-sm-6" type="text" id="id2"> 
-			<input type = "radio" name = "single_true" class = "col-sm-3"> 
-		</div>
-		<div class="form-group has-success row"> 
-			<label class="control-label col-sm-1" for="id3">C: </label> 	
-			<input class="form-control col-sm-6" type="text" id="id3">
-			<input type = "radio" name = "single_true" class = "col-sm-3"> 
-		</div>
-		<div class="form-group has-success row"> 
-			<label class="control-label col-sm-1" for="id4">D: </label>
-			<input class="form-control col-sm-6" type="text" id="id4"> 
-			<input type = "radio" name = "single_true" class = "col-sm-3"> 
-		</div>
-		<div class="form-group form-inline">
-			<label style="margin-right : 27px;">Độ khó:</label>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" style="width: 50%" name="dokho">
-				<option value="de" selected>Dễ</option>
-				<option value="tb">Trung bình</option>
-				<option value="kho">Khó</option>
-			</select>
-		</div>
-		<div class="form-group form-inline">
-			<label style="margin-right : 15px;">Lĩnh vực:</label>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref3" style="width: 42%" name = "linhvuc">
-				<option value="toan" selected>Toán</option>
-				<option value="ly">Vật lý</option>
-				<option value="anh">Tiếng Anh</option>
-				<option value="iq">IQ</option>
-				<option value="khac" >Khác</option>
-			</select>
-			<div id="div_khac3" class="form-group form-inline" style="display: none">
-				<label style="margin-right : 15px;">Nhập lĩnh vực:</label>
-				<input type="text" class="form-control" name = "lv_khac"/>
-			</div>
-		</div>
-		
-		<div class = "form-group row">
-		<div class = "col-sm-10"></div>
-		<div class = "col-sm-2">
-			<input type = "submit" class = "btn btn-success" value = "Lưu">
-		
-			<button type="button" class="btn btn-danger">Thoát</button>
-		</div>
-	</div>
-	</form>
- <!-- end choise question -->
-
-	<form class = "container" id = "multichoise" style = "display: none;">
+<form class = "container" id = "multichoise">
 		<div class = "form-group">
 			<label for = "ques-type3">Nhập câu hỏi:</label>
 			<textarea class = "form-control" id = "ques-type3" rows = "3"></textarea>
@@ -246,7 +121,7 @@
 		</div>
 		<div class="form-group form-inline">
 			<label style="margin-right : 27px;">Độ khó:</label>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" style="width: 50%" name="dokho">
+			<select class="custom-select my-1 mr-sm-2"  style="width: 50%" name="dokho">
 				<option value="de" selected>Dễ</option>
 				<option value="tb">Trung bình</option>
 				<option value="kho">Khó</option>
@@ -254,7 +129,7 @@
 		</div>
 		<div class="form-group form-inline">
 			<label style="margin-right : 15px;">Lĩnh vực:</label>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref3" style="width: 42%" name = "linhvuc">
+			<select class="custom-select my-1 mr-sm-2"  style="width: 42%" name = "linhvuc">
 				<option value="toan" selected>Toán</option>
 				<option value="ly">Vật lý</option>
 				<option value="anh">Tiếng Anh</option>
@@ -274,9 +149,7 @@
 			<button type="button" class="btn btn-danger">Thoát</button>
 		</div>
 	</div>
-	</form>
-<!-- end multichoise question -->
-
+    </form>
     <script type="text/javascript" src="../public/js/add-question.js"></script>
 <?php
     require_once __DIR__.'/../layouts/footer.php';
