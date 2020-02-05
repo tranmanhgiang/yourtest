@@ -1,11 +1,12 @@
 <?php
 	require_once __DIR__.'/../autoloads/autoload.php';
 	require_once __DIR__.'/../layouts/header.php';
-    // if(!isset($_SESSION['u_id'])){
-    //     echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='index.php'</script>";
-    // }
+    if(!isset($_SESSION['u_id'])){
+        echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='index.php'</script>";
+    }
 ?>
-<form class = "container" id = "multichoise">
+<form class = "container" id = "multiplechoise">
+	<p><b style = "font-size: 30px; color: black; ">Kiểu câu hỏi :<small> Multiple Choice</small></b></p>
 		<div class = "form-group">
 			<label for = "ques-type3">Nhập câu hỏi:</label>
 			<textarea class = "form-control" id = "ques-type3" rows = "3"></textarea>
@@ -145,12 +146,11 @@
 		<div class = "col-sm-10"></div>
 		<div class = "col-sm-2">
 			<input type = "submit" class = "btn btn-success" value = "Lưu">
-		
-			<button type="button" class="btn btn-danger">Thoát</button>
+			<button type="button" class="btn btn-danger"><a href="index.php" style = "color: white; text-decoration:none">Thoát</a></button>
 		</div>
 	</div>
     </form>
-    <script type="text/javascript" src="../public/js/add-question.js"></script>
+    <script type="text/javascript" src="../public/js/multipleChoice.js"></script>
 <?php
     require_once __DIR__.'/../layouts/footer.php';
 ?>

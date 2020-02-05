@@ -63,7 +63,14 @@
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="dotest.php">Thi thử</a></li>
                                 <li><a href="aaaa">Tạo bài thi</a></li>
-                                <li><a href="add-question.php">Thêm câu hỏi</a></li>
+                                <div class="btn-group">
+                                        <li data-toggle="dropdown"><a href="">Thêm câu hỏi</a></li>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="True-False.php">Chọn đúng/sai</a>
+                                            <a class="dropdown-item" href="SingleChoice.php">Chọn một đáp án</a>
+                                            <a class="dropdown-item" href="MultipleChoice.php">Chọn nhiều đáp án</a>
+                                        </div>
+                                    </div>
                                 <li><a href="instructors.html">Xếp hạng thành tích</a></li>
                             </ul>
 
@@ -82,8 +89,6 @@
                                             <a class="dropdown-item" href="profile.php">Thông tin</a>
                                             <a class="dropdown-item" href="logout.php">Log out</a>
                                         </div>
-
-
                                     </div>
                                 <?php else : ?>
                                     <!-- Register / Login -->

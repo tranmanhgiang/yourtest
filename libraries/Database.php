@@ -58,6 +58,5 @@
             $result = $this->conn->query($sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->conn));
             return $this->conn->fetch_assoc;
         }
-        
     }
 ?>
