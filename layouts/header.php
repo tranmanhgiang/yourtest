@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/profile.css">
     <link rel="stylesheet" href="../public/css/do-test.css">
+    <link rel="stylesheet" href="../public/css/addTest.css">
 </head>
 
 <body>
@@ -62,7 +63,7 @@
                             <ul>
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="dotest.php">Thi thử</a></li>
-                                <li><a href="aaaa">Tạo bài thi</a></li>
+                                <li><a href="addTest.php">Tạo bài thi</a></li>
                                 <div class="btn-group">
                                         <li data-toggle="dropdown"><a href="">Thêm câu hỏi</a></li>
                                         <div class="dropdown-menu dropdown-menu-right">

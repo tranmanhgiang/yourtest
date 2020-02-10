@@ -2,7 +2,7 @@
 	require_once __DIR__.'/../autoloads/autoload.php';
 	require_once __DIR__.'/../layouts/header.php';
     if(!isset($_SESSION['u_id'])){
-        echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='index.php'</script>";
+        echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='login.php'</script>";
     }
 ?>
 <?php 
@@ -19,22 +19,36 @@
 			$error['q_content'] = "Mời bạn nhập câu hỏi";
 		}
 	}
+
 	if($_SERVER['REQUEST_METHOD'] == 'POST' && empty($error)){
-		$ques_insert = $db->insert('questions',$q_data);
-		if($ques_insert > 0){
-			$a_data = [
-				'q_id' => $ques_insert,
-				'a_data' => postInput('tf_ques'),
-				'a_true' => 1
-			];
-			$ans_insert = $db->insert('answers',$a_data);
-			echo  "<script>alert('Thêm thành công!'); location.href='True-False.php'</script>";
+		$check = $db->fetchOne("questions"," q_content = '".$q_data['q_content']."'");
+		if($check != NULL){
+			$_SESSION['error'] = "Thêm thất bại! Câu hỏi đã tồn tại trong ngân hàng câu hỏi";
 		}else{
-			$_SESSION['error'] = "Thêm thất bại";
+			$ques_insert = $db->insert('questions',$q_data);
+			if($ques_insert > 0){
+				$ans_data = [
+					'q_id' => $ques_insert,
+					'a_data' => postInput('tf_ques'),
+					'a_true' => true
+				];
+				$ans_insert = $db->insert('answers',$ans_data);
+				if($ans_insert > 0){
+					echo  "<script>alert('Thêm thành công!'); location.href='True-False.php'</script>";
+				}else{
+					$_SESSION['error'] = "Thêm thất bại";
+				}
+			}else{
+				$_SESSION['error'] = "Thêm thất bại";
+			}
 		}
 	}
-	
 ?>
+
+<?php 
+	require_once __DIR__.'/../notification/notification.php';
+?>
+
 <form class = "container" id = "true-false" action = "" method = "POST">
 	<p><b style = "font-size: 30px; color: black; ">Kiểu câu hỏi :<small> True or False</small></b></p>
 		<div class = "form-group">

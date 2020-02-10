@@ -47,16 +47,53 @@
             $sql = "SELECT * FROM {$table} WHERE ";
             $sql .= $query;
             $sql .= "LIMIT 1";
-            
-            $result = $this->conn->query($sql);
+            $result = $this->conn->query($sql) or die("Lỗi  truy vấn fetchOne " .mysqli_error($this->conn));;
             return $result -> fetch_assoc();
         }
 
-        
-        public function fetchID($table , $id ){
-            $sql = "SELECT * FROM {$table} WHERE id = $id ";
-            $result = $this->conn->query($sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->conn));
-            return $this->conn->fetch_assoc;
+        public function fetchOne1($table1,$table2,$get_col,$get_col2,$conditions, $query){
+            $sql = "SELECT DISTINCT {$get_col} , $get_col2 FROM {$table1} JOIN {$table2} ON ";
+            $sql .= $conditions ;
+            $sql .= ' WHERE ';
+            $sql .= $query;
+            $result = $this->conn->query($sql) or die("Lỗi truy vấn fetchJoin" .mysqli_error($this->conn));
+            $data = [];
+            if( $result)
+            {
+                while ($num = mysqli_fetch_assoc($result))
+                {
+                    $data[] = $num;
+                }
+            }
+            return $data;
         }
+
+
+        public function fetchID($table , $get_col , $query ){
+            $sql = "SELECT DISTINCT {$get_col} FROM {$table} WHERE ";
+            $sql .= $query;
+            $result = $this->conn->query($sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->conn));
+            return $result;
+        }
+
+        public function fetchJoin($table1, $table2 ,$conditions,$conditions2, $query){
+            $sql = "SELECT * FROM {$table1} JOIN {$table2} ON ";
+            $sql .= $conditions ;
+            $sql .= ' WHERE ';
+            $sql .= $query;
+            $sql .= ' AND ';
+            $sql .= $conditions2;
+            $result = $this->conn->query($sql) or die("Lỗi truy vấn fetchJoin" .mysqli_error($this->conn));
+            $data = [];
+            if( $result)
+            {
+                while ($num = mysqli_fetch_assoc($result))
+                {
+                    $data[] = $num;
+                }
+            }
+            return $data;
+        }
+
     }
 ?>

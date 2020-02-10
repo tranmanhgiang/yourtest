@@ -2,7 +2,7 @@
   require_once __DIR__.'/../autoloads/autoload.php';
   require_once __DIR__.'/../layouts/header.php';
   if(!$_SESSION['u_id']){
-    echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='index.php'</script>";
+    echo "<script>alert('bạn phải đăng nhập mới thực hiện được chức năng này'); location.href='login.php'</script>";
   }
 ?>
 <script src="../public/js/jquery/jquery-2.2.4.min.js"></script>
