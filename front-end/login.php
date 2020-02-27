@@ -24,7 +24,12 @@
         $_SESSION['u_lastName'] = $check['u_lastName'];
         $_SESSION['u_description'] = $check['u_description'];
         $_SESSION['u_role'] = $check['u_role'];
+        $_SESSION['thunbar'] = $check['thunbar'];
+        if($_SESSION['u_role'] == 0){
         echo "<script>alert('Đăng nhập thành công'); location.href='index.php'</script>";
+        }else{
+          echo "<script>alert('Đăng nhập thành công'); location.href='http://localhost/yourtest/admin/index.php'</script>";
+        }
       }else{
         $_SESSION['error'] = "Email hoặc mật khẩu không chính xác";
       }

@@ -5,7 +5,7 @@
     require __DIR__.'/../layouts/header.php';
 ?>
     <!-- ##### Hero Area Start ##### -->
-    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(../public/img/bg-img/bg1.jpg);">
+    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(../public/front-end/img/bg-img/bg1.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -35,10 +35,10 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="250ms">
                         <div class="icon">
-                            <img src="../public/img/core-img/docs.png" alt="">
+                            <img src="../public/front-end/img/core-img/docs.png" alt="">
                         </div>
-                        <h2><span class="counter">572</span></h2>
-                        <h5>Câu chuyện học tập</h5>
+                        <h2><span class="counter">222</span></h2>
+                        <h5>Tài liệu học tập</h5>
                     </div>
                 </div>
 
@@ -46,10 +46,10 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
                         <div class="icon">
-                            <img src="../public/img/core-img/star.png" alt="">
+                            <img src="../public/front-end/img/core-img/star.png" alt="">
                         </div>
-                        <h2><span class="counter">123</span></h2>
-                        <h5>Diễn đàn</h5>
+                        <h2><span class="counter">100</span></h2>
+                        <h5>Đánh giá</h5>
                     </div>
                 </div>
 
@@ -57,10 +57,10 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="750ms">
                         <div class="icon">
-                            <img src="../public/img/core-img/events.png" alt="">
+                            <img src="../public/front-end/img/core-img/events.png" alt="">
                         </div>
-                        <h2><span class="counter">89</span></h2>
-                        <h5>Bình luận</h5>
+                        <h2><span class="counter">19</span></h2>
+                        <h5>Góp ý</h5>
                     </div>
                 </div>
 
@@ -68,9 +68,9 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="1000ms">
                         <div class="icon">
-                            <img src="../public/img/core-img/earth.png" alt="">
+                            <img src="../public/front-end/img/core-img/earth.png" alt="">
                         </div>
-                        <h2><span class="counter">10</span></h2>
+                        <h2><span class="counter">99</span></h2>
                         <h5>Sự kiện</h5>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
     <!-- ##### Cool Facts Area End ##### -->
 
     <!-- ##### Popular Courses Start ##### -->
-    <section class="popular-courses-area section-padding-100-0" style="background-image: url(../public/img/core-img/texture.png);">
+    <section class="popular-courses-area section-padding-100-0" style="background-image: url(../public/front-end/img/core-img/texture.png);">
         <div class="container">
             <div class="row">
                 <div class="col-12">

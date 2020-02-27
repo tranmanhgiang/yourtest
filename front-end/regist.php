@@ -24,19 +24,34 @@
 		if($data['u_password'] != postInput('confpass')){
 			$error['confpass'] = 'Mật khẩu không trùng khớp';
 		}
+		if( ! isset($_FILES['thunbar'])){
+            $error['thunbar'] = "Mời bạn chọn hình ảnh";
+        }
 	}
 	if($_SERVER['REQUEST_METHOD'] == 'POST' && empty($error)){
-		$check = $db->fetchOne("users"," u_email = '".$data['u_email']."'");
-		if($check != NULL){
-			$_SESSION['error'] = "Email đã tồn tại";
-		}else{
-			$id_insert = $db->insert("users",$data);
-			if($id_insert > 0){
-				echo "<script>alert('Đăng ký thành công! Mời bạn đăng nhập'); location.href='login.php'</script>";
+            if(isset($_FILES['thunbar'])){
+                $file_name = $_FILES['thunbar']['name'];
+                $file_tmp = $_FILES['thunbar']['tmp_name'];
+                $file_type = $_FILES['thunbar']['type'];
+                $file_erro = $_FILES['thunbar']['error'];
+
+                if($file_erro == 0){
+                    $part = ROOT ."avt/";
+                    $data['thunbar'] = $file_name;
+                }
+            }
+			$check = $db->fetchOne("users"," u_email = '".$data['u_email']."'");
+			if($check != NULL){
+				$_SESSION['error'] = "Email đã tồn tại";
 			}else{
-				$_SESSION['error'] = "Đăng nhập thất bại";
+				$id_insert = $db->insert("users",$data);
+				if($id_insert){
+					move_uploaded_file($file_tmp,$part.$file_name);
+					echo "<script>alert('Đăng ký thành công! Mời bạn đăng nhập'); location.href='login.php'</script>";
+				}else{
+					$_SESSION['error'] = "Thêm mới thất bại";
+				}
 			}
-		}
 		
 		
 	}
@@ -52,7 +67,7 @@
      <div class="container-fluid bg">
 			<div class="row justify-content-center">
 				<div class="form-group row-container">
-					<form action="" id="form" method="post">
+					<form action="" id="form" method="post" enctype="multipart/form-data">
                     <h2 class="title">Tạo tài khoản MIỄN PHÍ</h2>
                     	<div class="row form-group" > 
           					<div class="col-xs-6 col-md-6"> 
@@ -91,8 +106,16 @@
 						<div class="form-group">
 							<span class="error" style="color:red; font-weight: bold;"></span>
 						</div>
-
-						<textarea rows="5" cols="80" placeholder="Nhập mô tả về bản thân" name = "description" id = "description"></textarea>
+						<div class="form-group row">
+							<label for="inputEmail3" class="col-sm-2 col-form-label">Hình ảnh</label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" id="inputEmail3" name = "thunbar">
+                                    <?php if(isset($error['thunbar'])):?>
+                                        <p class = "text-danger"><?php echo $error['thunbar'];?></p>
+                                    <?php endif?>
+                                </div>
+						</div>
+						<textarea rows="3" cols="80" placeholder="Nhập mô tả về bản thân" name = "description" id = "description"></textarea>
                         <button class="btn btn-lg btn-primary btn-block" type="submit"> Đăng ký</button><br/>
                         <p>Bạn đã có tài khoản? <a href="login.php">Đăng nhập >></a></p>
 					</form>

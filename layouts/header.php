@@ -5,13 +5,15 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../public/img/core-img/favicon.ico">
+    <link rel="icon" href="../public/front-end/img/core-img/favicon.ico">
     <title>YourTests - Create &amp; Do Your Test|Home</title>
-    <link rel="stylesheet" href="../public/css/log_reg.css">
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/profile.css">
-    <link rel="stylesheet" href="../public/css/do-test.css">
-    <link rel="stylesheet" href="../public/css/addTest.css">
+    <link rel="stylesheet" href="../public/front-end/css/log_reg.css">
+    <link rel="stylesheet" href="../public/front-end/css/style.css">
+    <link rel="stylesheet" href="../public/front-end/css/profile.css">
+    <link rel="stylesheet" href="../public/front-end/css/doTest.css">
+    <link rel="stylesheet" href="../public/front-end/css/add-test.css">
+    <link rel="stylesheet" href="../public/front-end/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/front-end/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -26,7 +28,7 @@
             <!-- Contact Info -->
             <div class="contact-info">
                 <a href="#"><span>Phone:</span> 0395578355</a>
-                <a href="#"><span>Email:</span> info@clever.com</a>
+                <a href="#"><span>Email:</span> info@yourtests.com</a>
             </div>
             <!-- Follow Us -->
             <div class="follow-us">
@@ -43,7 +45,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.php"><img src="../public/img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="index.php"><img src="../public/front-end/img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -62,8 +64,8 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="index.php">Trang chủ</a></li>
-                                <li><a href="dotest.php">Thi thử</a></li>
-                                <li><a href="addTest.php">Tạo bài thi</a></li>
+                                <li><a href="optionTest.php">Thi thử</a></li>
+                                <li><a href="CreateTest.php">Tạo bài thi</a></li>
                                 <div class="btn-group">
                                         <li data-toggle="dropdown"><a href="">Thêm câu hỏi</a></li>
                                         <div class="dropdown-menu dropdown-menu-right">
@@ -72,7 +74,7 @@
                                             <a class="dropdown-item" href="MultipleChoice.php">Chọn nhiều đáp án</a>
                                         </div>
                                     </div>
-                                <li><a href="instructors.html">Xếp hạng thành tích</a></li>
+                                <li><a href="rank.php">Xếp hạng thành tích</a></li>
                             </ul>
 
                             <!-- Search Button -->
@@ -82,15 +84,26 @@
                                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
-                                <?php if(isset($_SESSION['u_id'])): ?>
-                                    
-                                    <div class="btn-group">
-                                        <span class="dropdown-toggle" data-toggle="dropdown">Xin chào <?php echo $_SESSION['u_firstName']; ?></span>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="profile.php">Thông tin</a>
-                                            <a class="dropdown-item" href="logout.php">Log out</a>
+                                <?php if(isset($_SESSION['u_id']) && isset($_SESSION['thunbar'])): ?>
+
+                                        <div class="nav-item dropdown no-arrow">
+                                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="mr-2 d-none d-lg-inline text-gray-600 "><?php echo $_SESSION['u_firstName']; ?> </span>
+                                            <img class="img-profile rounded-circle" src="../public/uploads/avt/<?php echo $_SESSION['thunbar'] ?>" style = "width:35px; height:35px;">
+                                        </a>
+                                        <!-- Dropdown - User Information -->
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                            <a class="dropdown-item" href="profile.php">
+                                            Thông tin
+                                            </a>
+                                            <a class="dropdown-item" href="changePass.php">
+                                            Thay đổi mật khẩu
+                                            </a>
+                                            <a class="dropdown-item" href="logout.php">
+                                            Logout
+                                            </a>
                                         </div>
-                                    </div>
+                                        </div>
                                 <?php else : ?>
                                     <!-- Register / Login -->
                                     <div class="register-login-area">

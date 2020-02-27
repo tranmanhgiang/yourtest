@@ -24,15 +24,15 @@
 
         <!-- ##### All Javascript Script ##### -->
         <!-- jQuery-2.2.4 js -->
-        <script src="../public/js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="../public/front-end/js/jquery/jquery-2.2.4.min.js"></script>
         <!-- Popper js -->
-        <script src="../public/js/bootstrap/popper.min.js"></script>
+        <script src="../public/front-end/js/bootstrap/popper.min.js"></script>
         <!-- Bootstrap js -->
-        <script src="../public/js/bootstrap/bootstrap.min.js"></script>
+        <script src="../public/front-end/js/bootstrap/bootstrap.min.js"></script>
         <!-- All Plugins js -->
-        <script src="../public/js/plugins/plugins.js"></script>
+        <script src="../public/front-end/js/plugins/plugins.js"></script>
         <!-- Active js -->
-        <script src="../public/js/active.js"></script>
+        <script src="../public/front-end/js/active.js"></script>
     </body>
 
 </html>

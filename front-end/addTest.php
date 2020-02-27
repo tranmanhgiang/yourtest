@@ -7,22 +7,41 @@
 ?>
 
 <script src = "../public/js/jquery/jquery-2.2.4.min.js"></script>
-<script src = "../public/js/add-test.js"></script>
+<script src = "../public/front-end/js/addTest.js"></script>
 <br>
 
 <?php 
   $get_lv1 = $db->fetchID("questions","q_linhvuc"," u_id = '".$_SESSION['u_id']."' " );
   $get_lv2 = $db->fetchID("questions","q_linhvuc"," u_id = '".$_SESSION['u_id']."' " );
+  $get_ques = $db->fetchOne1("questions","answers","questions.q_content , questions.q_type , questions.q_level , questions.q_linhvuc , questions.q_id","questions.q_id = answers.q_id"," questions.u_id = '".$_SESSION['u_id']."' " );
+  $u_id = $_SESSION['u_id'];
+  $id_test = $db->fetchOne("tests","u_id = $u_id ORDER BY t_id DESC ");
+  $id = intval(getInput('ques'));
+    $data = [
+        't_id' => $id_test['t_id'],
+        'q_id' => $id
+    ];
+    if($data['q_id'] != 0){
+      $insert_ques = $db->insert("tests_questions",$data);
+      if($insert_ques > 0){
+        $_SESSION['success'] = "Thêm thành công";
+      }
+    }
 
-  
-  $get_ques = $db->fetchOne1("questions","answers","questions.q_content","questions.q_type , questions.q_level,questions.q_linhvuc ","questions.q_id = answers.q_id"," questions.u_id = '".$_SESSION['u_id']."' " );
+
+    // $check = $db->fetchAll("tests_questions","t_id = $id_test");
+?>
+
+<!-- create question -->
+<?php 
+    require_once __DIR__.'/../notification/notification.php';
 ?>
 <div class="container">
-  <form action="/tests/new" method="post">
     <div class="row">
-      <div class="col-md-6" id="left-layer">
-      </div>
-      <div class="col-md-6" id="right-layer">
+    
+      
+      
+      <div class="col-md-12" id="right-layer">
         <div class="tab">
           <div class="row">
             <button type="button" class="tablinks col-md-6" onclick="openTab(event, 'handwork')">Thêm thủ công</button>
@@ -53,40 +72,41 @@
           <div>
           <?php $stt = 1; foreach($get_ques as $item): ?>
             <div class="question-box">
-
-              <p id="id" style="display: none"></p>
               <div>
-                <button type="button" class="button-add">Thêm</button>
+                <a class = "button-add" href="addTest.php?ques=<?php echo $item['q_id'] ?>">Thêm</a>
+                
                 <button type="button" class="button-type" style="float: right"><?php echo $item['q_level']; ?></button>
                 <button type="button" class="button-sub"
-                  style="float: right; margin-right: 5px;"><?php echo $item['q_linhvuc']; ?></button>
+                  style="float: right; margin-right: 5px;"><?php echo $item['q_linhvuc']; ?>
+                </button>
+                
               </div>
-
+              <p id="id" name = "ans[]" style="display: none"><?php echo $item['q_id'];?></p>
               <div class="question"><b>Câu <?php echo $stt; ?>: </b><?php echo $item['q_content'] ?>
               </div>
               <div class="answer-box">
                 <div class="row">
-
+                
                   <?php if($item['q_type'] == 1): ?>
                     <div class="col-md-6">
-                      <label name="answer-info"> <input type="radio"> <label class="STT">A.</label>Đúng</label>
+                      <label name="answer-info"> <input type="radio" name = "ans_type1<?php echo $stt ?>"> <label class="STT">A.</label>Đúng</label>
                     </div>
                     <div class="col-md-6">
-                      <label name="answer-info"> <input type="radio"> <label class="STT">B.</label>Sai</label>
+                      <label name="answer-info"> <input type="radio" name = "ans_type1<?php echo $stt ?>"> <label class="STT">B.</label>Sai</label>
                     </div>
 
                   <?php elseif($item['q_type'] == 2): ?>
-                    <?php $get_ans = $db->fetchJoin("questions","answers","questions.q_id = answers.q_id"," questions.u_id = '".$_SESSION['u_id']."' ","questions.q_content = '".$item['q_content']."' " ); ?>
+                    <?php $get_ans = $db->fetchJoin("questions","answers","questions.q_id = answers.q_id"," questions.u_id = '".$_SESSION['u_id']."' AND questions.q_content = '".$item['q_content']."' " ); ?>
                     <?php $i = 0; foreach($get_ans as $ele): ?>
                     <div class="col-md-6">
-                      <label name="answer-info"> <input type="radio"> <label class="STT"><?php echo chr(($i++)+ 65); ?>.</label><?php echo $ele['a_data'] ?></label>
+                      <label name="answer-info"> <input type="radio" name = "ans_type2<?php echo $stt ?>"> <label class="STT"><?php echo chr(($i++)+ 65).'. ' .$ele['a_data'] ?></label>
                     </div>
                     <?php endforeach; ?>
                   <?php elseif($item['q_type'] == 3): ?>
-                    <?php $get_ans = $db->fetchJoin("questions","answers","questions.q_id = answers.q_id"," questions.u_id = '".$_SESSION['u_id']."' ","questions.q_content = '".$item['q_content']."' " ); ?>
+                    <?php $get_ans = $db->fetchJoin("questions","answers","questions.q_id = answers.q_id"," questions.u_id = '".$_SESSION['u_id']."' AND questions.q_content = '".$item['q_content']."' " ); ?>
                     <?php $i = 0; foreach($get_ans as $ele): ?>
                   <div class="col-md-6">
-                    <label name="answer-info"> <input type="checkbox"> <label class="STT"><?php echo chr(($i++)+ 65); ?>.</label><?php echo $ele['a_data'] ?></label>
+                    <label name="answer-info"> <input type="checkbox"> <label class="STT"><?php echo chr(($i++)+ 65).'. ' .$ele['a_data'] ?></label>
                   </div>
                   <?php endforeach; ?>
                   <?php endif; ?>
@@ -125,32 +145,7 @@
         </div>
       </div>
     </div>
-    <div class="test-create-end">
-      <div class="row">
-        <div class="col-md-6" style="padding-left:0px">
-          <div class="row">
-            <div class="col-md-6">
-              <label><b>Tổng số câu đã tạo: </b></label> <label id="question-sum">0</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label style="width: 150px"><b>Tên bài test: </b></label>
-        <input type="text" class="col-sm-5 form-control" name="name" required>
-      </div>
-      <div class="row form-group">
-        <label style="width: 150px"><b>Mật khẩu (nếu có): </b></label>
-        <input type="password" class="col-sm-5 form-control" name="password">
-      </div>
-      <div class="row form-group">
-        <label style="width: 150px"><b>Thời gian (phút): </b></label>
-        <input type="number" class="col-sm-2 form-control" name="time" required>
-      </div>
-      <button type="submit" class="btn btn-success">Tạo bài thi</button>
-      <a href=""><button class="btn btn-danger" type="button">Hủy bỏ</button></a>
-  </form>
-</div>
+    
 </div>
 <br>
         
@@ -181,6 +176,13 @@
         });
       }
     }
+  }
+
+  function get_id(){
+    var ID = $('#left-layer .question-box #id');
+    ID.each(function(){
+      return (($this).text());
+    })
   }
 
   function auto_add() {
@@ -218,5 +220,8 @@
       alert('Hãy lựa chọn lĩnh vực, độ khó và số câu hỏi');
     }
   }
+
+  
 </script>
+
 <?php require_once __DIR__.'/../layouts/footer.php'; ?>

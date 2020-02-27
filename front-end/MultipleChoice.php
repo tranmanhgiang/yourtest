@@ -277,7 +277,7 @@
 		</div>
 	</div>
     </form>
-    <script type="text/javascript" src="../public/js/multipleChoice.js"></script>
+    <script type="text/javascript" src="../public/front-end/js/multipleChoice.js"></script>
 <?php
     require_once __DIR__.'/../layouts/footer.php';
 ?>
