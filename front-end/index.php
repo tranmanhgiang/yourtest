@@ -94,7 +94,7 @@
                 <!-- Single Popular Course -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
-                        <img src="../public/img/bg-img/math.png" alt="">
+                        <img src="../public/front-end/img/bg-img/math.png" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
                             <h4>Toán</h4>
@@ -123,7 +123,7 @@
                 <!-- Single Popular Course -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <img src="../public/img/bg-img/chemistry.png" alt="">
+                        <img src="../public/front-end/img/bg-img/chemistry.png" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
                             <h4>Hóa học</h4>
@@ -152,7 +152,7 @@
                 <!-- Single Popular Course -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="750ms">
-                        <img src="../public/img/bg-img/english.jpg" alt="">
+                        <img src="../public/front-end/img/bg-img/english.jpg" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
                             <h4>Tiếng Anh</h4>
